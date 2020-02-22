@@ -1,5 +1,6 @@
 package com.blackfish.a1pedal;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -128,6 +129,7 @@ public class FriendFragment   extends Fragment implements DroidListener {
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private  class GetContacts extends AsyncTask<Void, Void, String> {
 
         HttpURLConnection urlConnection = null;
@@ -145,6 +147,7 @@ public class FriendFragment   extends Fragment implements DroidListener {
 
 
             try {
+                assert url != null;
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty ("Authorization", "Token "+ token );
                 urlConnection.setRequestMethod("GET");
@@ -174,7 +177,7 @@ public class FriendFragment   extends Fragment implements DroidListener {
             try {
 
                 JSONObject r = new JSONObject(response);
-                JSONArray kol = r.getJSONArray("user_friends");
+                JSONArray kol = r.getJSONObject("friends").getJSONArray("user_friends");
 
                 for (int i = 0; i<kol.length() ; i++) {
                     JSONObject elem = kol.getJSONObject(i);

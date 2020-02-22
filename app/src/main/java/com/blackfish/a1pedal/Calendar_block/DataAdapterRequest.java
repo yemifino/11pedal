@@ -39,7 +39,7 @@ public class DataAdapterRequest extends RecyclerView.Adapter<DataAdapterRequest.
 
         holder.TextBodyView.setText("Запись на "+recomendList.getDate() + ", в " + recomendList.getTime());
 
-       /* holder.NoTextView.setOnClickListener(new View.OnClickListener() {
+       holder.NoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -54,7 +54,7 @@ public class DataAdapterRequest extends RecyclerView.Adapter<DataAdapterRequest.
             public void onClick(View view) {
 
             }});
-            */
+
     }
 
     @Override
